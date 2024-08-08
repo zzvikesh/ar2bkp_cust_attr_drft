@@ -1,0 +1,2 @@
+{"version":3,"file":"CustomerObjectPage.js","names":["sap","ui","define","ObjectPage","CustomPageDefinitions","actions","assertions","appId","componentId","contextPath"],"sources":["CustomerObjectPage-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CAAC,0BAA+
+2B,SAASC,GAC/C,aAEA,IAAIC,EAAwB,CACxBC,QAAS,CAAC,EACVC,WAAY,CAAC,GAGjB,OAAO,IAAIH,EACP,CACII,MAAO,eACPC,YAAa,qBACbC,YAAa,aAEjBL,EAER","ignoreList":[]}                                                                                                         

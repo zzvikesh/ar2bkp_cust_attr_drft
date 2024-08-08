@@ -1,0 +1,2 @@
+{"version":3,"file":"CustomerList.js","names":["sap","ui","define","t","s","actions","assertions","appId","componentId","contextPath"],"sources":["CustomerList-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CAAC,0BAA0B,SAASC,GAAG,aAAa,IAAIC,EAAE,CAACC,QAAQ,+
+CAAC,EAAEC,WAAW,CAAC,GAAG,OAAO,IAAIH,EAAE,CAACI,MAAM,eAAeC,YAAY,eAAeC,YAAY,aAAaL,EAAE","ignoreList":[]}                                                                                                                                                        

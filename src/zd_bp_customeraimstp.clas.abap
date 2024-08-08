@@ -1,0 +1,5 @@
+CLASS zd_bp_customeraimstp DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zd_r_customeraimstp.
+ENDCLASS.
+
+CLASS zd_bp_customeraimstp IMPLEMENTATION.
+ENDCLASS.

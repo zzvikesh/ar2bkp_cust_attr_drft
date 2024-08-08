@@ -1,0 +1,2 @@
+{"version":3,"file":"CustomerShippingPointObjectPage-dbg.js","names":["sap","ui","define","t","e","actions","assertions","appId","componentId","contextPath"],"sources":["CustomerShippingPointObjectPage-dbg-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CAAC+
+,0BAA0B,SAASC,GAAG,aAAa,IAAIC,EAAE,CAACC,QAAQ,CAAC,EAAEC,WAAW,CAAC,GAAG,OAAO,IAAIH,EAAE,CAACI,MAAM,eAAeC,YAAY,kCAAkCC,YAAY,gCAAgCL,EAAE","ignoreList":[]}                                                                                                      

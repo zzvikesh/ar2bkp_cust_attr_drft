@@ -1,0 +1,3 @@
+{"version":3,"file":"opaTests.qunit-dbg.js","names":["sap","ui","require","t","e","s","i","n","launchUrl","toUrl","run","pages","onTheCustomerList","onTheCustomerObjectPage","onTheCustomerShippingPointObjectPage"],"sources":["opaTests.qunit-dbg-dbg.js"],+
+"mappings":"AAAAA,IAAIC,GAAGC,QAAQ,CAAC,4BAA4B,6CAA6C,mDAAmD,yDAAyD,uEAAuE,SAASC,EAAEC,EAAEC,EAAEC,EAAEC,GAAG,aAAa,IAAIJ,EAAE,IAAIA,EAAE,CAACK,UAAUR,IAAIC,GAAGC,QAAQO,MAAM,gBAAgB,gBAAgBN,EAAEO,IAAI,CAACC,MAAM,CAACC,kBAAkBP,EAAEQ,wBAAwBP,EAAEQ,qCAAqCP,IAA+
+IH,EAAEM,IAAI","ignoreList":[]}                                                                                                                                                                                                                                

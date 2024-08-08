@@ -1,0 +1,8 @@
+@EndUserText.label: 'Customer AIMS'
+define service ZD_SD_CustomerAIMS {
+  expose ZD_C_CustomerAIMSM as Customer;
+  expose ZD_C_CustomerShipPointM as CustomerShippingPoint;
+  expose ZM_I_CustomerContactCard as CustomerCard;
+  expose ZM_I_BarcodeIndVH as BarcodeIndicatorVH;
+  expose ZM_I_AIMSFlagVH as AIMSFlagVH;
+}

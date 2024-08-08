@@ -1,0 +1,27 @@
+projection;
+strict ( 2 );
+
+use draft;
+
+define behavior for ZD_C_CustomerAIMSM alias Customer
+{
+  //use create;
+  use update;
+  //use delete;
+
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+
+  use association _CustomerShipPoint { create; with draft; }
+}
+
+define behavior for ZD_C_CustomerShipPointM alias CustomerShippingPoint
+{
+  use update;
+  use delete;
+
+  use association _CustomerAIMS { with draft; }
+}

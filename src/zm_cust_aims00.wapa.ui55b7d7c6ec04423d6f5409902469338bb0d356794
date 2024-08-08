@@ -1,0 +1,3 @@
+sap.ui.require(["sap/fe/test/JourneyRunner","zm/cust/aims/test/integration/FirstJourney","zm/cust/aims/test/integration/pages/CustomerList","zm/cust/aims/test/integration/pages/CustomerObjectPage","zm/cust/aims/test/integration/pages/CustomerShippingPoin+
+tObjectPage"],function(t,e,s,i,n){"use strict";var t=new t({launchUrl:sap.ui.require.toUrl("zm/cust/aims")+"/index.html"});t.run({pages:{onTheCustomerList:s,onTheCustomerObjectPage:i,onTheCustomerShippingPointObjectPage:n}},e.run)});                      
+//# sourceMappingURL=opaTests.qunit-dbg.js.map                                                                                                                                                                                                                 

@@ -1,0 +1,164 @@
+managed with additional save implementation in class zd_bp_customeraimstp unique;
+strict ( 2 );
+
+with draft;                                                    //Draft Enablement
+
+define behavior for ZD_R_CustomerAIMSTP alias CustomerAIMS
+implementation in class ZD_BP_CustomerAIMSTP unique
+persistent table ztotc_customer
+draft table ztotc_customer_d                                   //Draft Enablement
+lock master
+total etag LastChangedAt                                       //Draft Enablement
+authorization master ( instance )
+{
+  //  create ( precheck );
+  //  update ( precheck );
+  //  delete;
+  //  association _CustomerShipPoint { create ( precheck ) ; with draft; }       //Draft Enablement
+  create;
+  update ( precheck );
+  delete;
+  association _CustomerShipPoint { create; with draft; }       //Draft Enablement
+
+//  //Events
+//  event ShipViaChanged parameter ZVKS_D_ShipViaChanged;
+
+  /* Fields */
+
+  field ( readonly )
+  Customer, SalesOrganization, DistributionChannel, Division,   //Key Fields
+  CreatedBy, CreatedAt, LocalLastChangedBy, LocalLastChangedAt //Admin Fields
+  ;                                              //Get using Association
+
+  /*Global Attribues can only be edited by IT team,*/
+  /* Business should not have change acsess for global customer(aims) attributes*/
+  field ( features : instance )
+  /*Global Attributes*/
+  BarcodeIndicator,
+  DistributionCenterID,
+  /* Global Shipping Attributes */
+  PickCustomerConsolidatation,
+  PickConsolidatationByPO,
+  PickConsolidateByAttentionLine,
+  BarCodedPalletContentSheet,
+  /* Other Attributes */
+  ShipViaCode,
+  FrozenShipViaCode;
+
+  /* Determinations */
+
+  //  determine action PickConsolidateByCustomerPO { validation PickConsolidateByCustomerPO; }
+
+  /* Side Effects */
+  //  side effects
+  //  {
+  //    determine action validateAgencyID executed on field AgencyID affects messages;
+  //  }
+
+  /* Validations */
+
+  validation PickConsolidateByCustomerPO on save
+  {
+    create; update;
+    field PickCustomerConsolidatation,
+    PickConsolidatationByPO;
+  }
+
+  /* Draft Enablement */
+
+  draft action Resume;// with additional implementation;
+  draft action Edit;
+  draft action Activate;// optimized;
+  draft action Discard;
+
+  draft determine action Prepare
+  {
+    // I guess this can be skipped.
+    validation PickConsolidateByCustomerPO;
+    validation CustomerShippingPoint~PickConsolidateByCustomerPO;
+  }
+
+  /* Determine Actions */
+
+  /* Functions */
+
+
+  /* Mapping */
+
+  mapping for ztotc_customer
+  {
+    Customer = kunnr;
+    SalesOrganization = vkorg;
+    DistributionChannel = vtweg;
+    Division = spart;
+    //Delivering Plant
+    BarcodeIndicator = zmbarcode_ind;
+    DistributionCenterID = zmdc_id;
+    PickCustomerConsolidatation = zmcust_info_sts1;
+    PickConsolidatationByPO = zmcust_info_sts2;
+    PickConsolidateByAttentionLine = zmcust_info_sts3;
+    BarCodedPalletContentSheet = zmcust_info_sts7;
+    ShipViaCode = zmshipvia;
+    FrozenShipViaCode = zmfrozshipvia;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZD_R_CustomerShipPointTP alias CustomerShippingPoint
+implementation in class ZD_BP_CustomerShipPointTP unique
+persistent table ztotc_custshpt
+draft table ztotc_custshpt_d                                              //Draft Enablement
+lock dependent by _CustomerAIMS
+authorization dependent by _CustomerAIMS
+//etag master <field_name>
+{
+  //  update;
+  update ( precheck );
+  delete;
+  association _CustomerAIMS { with draft; }
+
+  /* Fields */
+
+  field ( readonly )
+  Customer, SalesOrganization, DistributionChannel, Division,   //Key Fields
+  CreatedBy, CreatedAt, LocalLastChangedBy, LocalLastChangedAt; //Admin Fields
+
+  field ( mandatory : create, readonly : update )
+  ShippingPoint;
+
+  /* Determinations */
+  determination setDefaultValues on modify { create; }
+
+  /* Validations */
+
+  validation PickConsolidateByCustomerPO on save
+  {
+    create; update;
+    field PickCustomerConsolidatation,
+    PickConsolidatationByPO;
+  }
+
+  /* Mapping */
+  mapping for ztotc_custshpt
+  {
+    Customer = kunnr;
+    SalesOrganization = vkorg;
+    DistributionChannel = vtweg;
+    Division = spart;
+    ShippingPoint = vstel;
+    PickCustomerConsolidatation = zmcust_info_sts1;
+    PickConsolidatationByPO = zmcust_info_sts2;
+    PickConsolidateByAttentionLine = zmcust_info_sts3;
+    BarCodedPalletContentSheet = zmcust_info_sts7;
+    ShipViaCode = zmshipvia;
+    FrozenShipViaCode = zmfrozshipvia;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+
+}
